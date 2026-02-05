@@ -1,4 +1,4 @@
-import requests
+﻿import requests
 from bs4 import BeautifulSoup
 import time
 import random
@@ -23,7 +23,7 @@ class RealScraper:
         try:
             url = f"https://www.jumia.co.ke/catalog/?q={quote_plus(query)}"
             r = self.session.get(url, timeout=20)
-            soup = BeautifulSoup(r.content, "lxml")
+            soup = BeautifulSoup(r.content, "html5lib")
             items = soup.find_all("article", class_="prd")
             
             for item in items[:15]:
@@ -66,7 +66,7 @@ class RealScraper:
         try:
             url = f"https://www.kilimall.co.ke/search?q={quote_plus(query)}"
             r = self.session.get(url, timeout=25)
-            soup = BeautifulSoup(r.content, "lxml")
+            soup = BeautifulSoup(r.content, "html5lib")
             
             # Look for product links
             links = soup.find_all("a", href=re.compile(r"/product/|/item/|/p/\d+"))

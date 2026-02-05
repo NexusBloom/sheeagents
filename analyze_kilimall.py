@@ -11,7 +11,7 @@ print(f"Fetching: {url}")
 r = requests.get(url, headers=headers, timeout=20)
 print(f"Status: {r.status_code}")
 
-soup = BeautifulSoup(r.content, "lxml")
+soup = BeautifulSoup(r.content, "html5lib")
 
 # Look for image patterns in the HTML
 print("\n=== Looking for image URLs ===")
@@ -60,3 +60,4 @@ if products:
 with open("kilimall_page.html", "w", encoding="utf-8") as f:
     f.write(soup.prettify())
 print("\nSaved full HTML to kilimall_page.html")
+
