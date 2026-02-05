@@ -1,5 +1,5 @@
-﻿from kilimall_scraper import scrape_kilimall_products
-from jumia_scraper import extract_jumia_products
+﻿from unified_scraper import search_all_products
+from unified_scraper import search_all_products
 import streamlit as st
 import sys
 from pathlib import Path
@@ -14,7 +14,7 @@ import re
 st.set_page_config(page_title="ShopSavvy AI", page_icon="*", layout="wide")
 
 try:
-    from real_scraper import RealScraper
+    from unified_scraper import search_all_products
     REAL_MODE = True
 except:
     REAL_MODE = False
