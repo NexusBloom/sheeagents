@@ -241,6 +241,27 @@ def search_kilimall_html(query, session=None):
         print(f\"Kilimall HTML error: {e}\")
         return []
 
+
+def get_sample_products(query):
+    \"\"\"Return sample products when scraping fails\"\"\"
+    samples = [
+        {
+            'name': f'Sample {query.title()} - Jumia',
+            'price': 'KES 15,999',
+            'image': 'https://example.com/image1.jpg',
+            'link': 'https://www.jumia.co.ke',
+            'source': 'Jumia (Sample)'
+        },
+        {
+            'name': f'Sample {query.title()} - Kilimall',
+            'price': 'KES 14,500',
+            'image': 'https://example.com/image2.jpg',
+            'link': 'https://www.kilimall.co.ke',
+            'source': 'Kilimall (Sample)'
+        }
+    ]
+    return samples
+
 def search_all_products(query):
     \"\"\"Search both platforms\"\"\"
     print(f\"Searching for: {query}\")
@@ -257,6 +278,10 @@ def search_all_products(query):
     
     all_results = jumia_results + kilimall_results
     
+    if not all_results:
+        print('Using sample data')
+        all_results = get_sample_products(query)
+    
     # Sort by price
     def get_price_num(price_str):
         nums = re.findall(r'[\d,]+', str(price_str))
@@ -272,3 +297,4 @@ if __name__ == \"__main__\":
     print(f\"\\nTotal: {len(results)} products\")
     for p in results[:5]:
         print(f\"{p['source']}: {p['name'][:40]} - {p['price']}\")
+
