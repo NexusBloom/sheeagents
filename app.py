@@ -1,9 +1,7 @@
 ﻿from unified_scraper import search_all_products
-from unified_scraper import search_all_products
 import streamlit as st
 import sys
 from pathlib import Path
-
 current_file = Path(__file__).resolve()
 project_root = current_file.parent
 sys.path.insert(0, str(project_root))
