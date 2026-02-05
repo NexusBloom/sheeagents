@@ -1,4 +1,6 @@
-﻿import streamlit as st
+﻿from kilimall_scraper import scrape_kilimall_products
+from jumia_scraper import extract_jumia_products
+import streamlit as st
 import sys
 from pathlib import Path
 
